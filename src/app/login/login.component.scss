@@ -1,0 +1,166 @@
+
+$inputH: 50px;
+
+$breakpoints: (
+	'sm': 767px,
+	'md': 992px,
+	'lg': 1200px
+);
+
+@mixin respond-to($breakpoint){
+	//retrieves the value from the key
+	$value: map-get($breakpoints, $breakpoint);
+
+
+	@if $value != null{
+		@media (min-width: $value){
+			@content;
+		}
+	}@else{
+		@warn "Unfortunately , no value could be retrieved from from `#{$breakpoint}`."
+	}
+}
+
+@mixin inputField(){
+	.input{
+		position: relative;
+	  	display: block;
+	  	margin-left: auto;
+		margin-right: auto;
+	 	width: 80%;
+	  	.inputbox{
+		    position: absolute;
+		    border-style: solid;
+		    border-color: #B8B0B0;
+		    background-color: #e6e9f0;
+		    opacity: 0.4;
+		    border-width: 1px;
+		    border-radius: 8px;
+		    border-left: transparent;
+		    padding: 0px; // get rid of inherent inputbox padding
+		    padding-left: 36%;
+		    @include respond-to(md){
+		    	padding-left: 28%;
+		    }
+		    width: 100%;
+			height: $inputH;
+		    font-size: 15pt;
+		}
+	  	.inputbox:focus{
+	    	outline-width: 0px;
+	  	}
+	  	.status{
+		    position: absolute;
+		    background-color: #FFFDFD;
+		    text-align: center;
+		   	font-family: 'Bitter', serif;;
+		    opacity: 0.9;
+		    border: solid #B8B0B0 1px;
+		    border-radius: 8px;
+		    height: $inputH;
+		    width: 33%;
+		    @include respond-to(md){
+		    	width: 25%;
+		    }
+		   
+		    p{
+		      margin: 12px;
+		      margin-left: 6px;
+		      color: #636363;
+		      font-size: 10.5pt;
+		      @include respond-to(md){
+		      	margin: 12px;
+		    	font-size: 12pt;
+		      }
+		    }
+	  	}  
+	}
+
+}
+
+.spacer{
+	height: 100px;
+}
+.smspacer{
+	height: 50px;
+}
+
+.window{
+	margin-left: auto;
+    margin-right: auto;
+	margin-top: 5%;
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	border: solid #B8B0B0 1px;
+	padding-bottom: 2%;
+	width: 95%;
+	@include respond-to(lg){
+		width: 66%;
+	}
+	.Login-icon{
+		display: block;
+		margin-left: auto;
+    	margin-right: auto;
+    	margin-top: 5%;
+	}
+	.highlight{
+		width: 100%;
+		border-top: solid #e6e9f0 2px;
+
+	}
+	.selector{
+		margin-top: 6%;
+	  	margin-left: auto;
+    	margin-right: auto;
+    	width: 60%;
+		.login{
+		  display: inline-block;
+		  background-color: #00ffc0;
+		  color: #FFFFFF;
+		  width: 48%;
+		  height: 45px;
+		  font-size: 16pt;
+		  text-align: center;
+		  font-family: 'Bitter', serif;;
+		  p{
+		    margin: 6px;
+		  }
+		}
+
+		.newuser{
+			display: inline-block;
+		  	background-color: #999999;
+		 	color: #FFFFFF;
+		 	margin-left: -2%;
+			width: 48%;
+			height: 45px; 
+			font-size: 16pt;
+			text-align: center;
+			font-family: 'Bitter', serif;;
+			border-left: transparent;
+		    p{
+		    	margin: 6px;
+		    	margin-left: 6px;
+			}
+		}
+
+	}
+
+	.enter{
+		display: block;
+		margin-left: auto;
+    	margin-right: auto;
+    	width: 60%;
+    	height: $inputH; //well use a standard height for now
+    	border-radius: 8px;
+    	background-color: #41b1f2;
+    	border: none;
+    	color: #FFFFFF;
+    	font-size: 18pt;
+	}
+	
+	@include inputField();
+	@include inputField();
+			
+}
+
