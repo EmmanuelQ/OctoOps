@@ -3,7 +3,7 @@ const express = require('express'),
 	  http = require('http'),
 	  bodyParser = require('body-parser');
 
-const LOGIN = require("./server/routes/login.js");
+const AUTHUSER = require("./server/routes/userauth.js");
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-app.use('/login', LOGIN);
+app.use('/userauth', USERAUTH);
 
 
 app.use(express.static(path.join(__dirname, 'dist')));

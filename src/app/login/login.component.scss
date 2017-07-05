@@ -146,7 +146,7 @@ $breakpoints: (
 
 	}
 
-	.enter{
+	.enterBtn{
 		display: block;
 		margin-left: auto;
     	margin-right: auto;
@@ -157,6 +157,12 @@ $breakpoints: (
     	border: none;
     	color: #FFFFFF;
     	font-size: 18pt;
+    	font-weight: bold;
+	}
+	.enterBtn:hover{
+		background-color: #53b8f3;
+		cursor: pointer;
+		cursor: hand;
 	}
 	
 	@include inputField();

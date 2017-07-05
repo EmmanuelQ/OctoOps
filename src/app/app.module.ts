@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -31,6 +32,7 @@ const ROUTES = [
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],

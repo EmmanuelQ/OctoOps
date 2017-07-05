@@ -1,15 +1,14 @@
-<form class="window">
+<form name ="form" class="window" #loginForm="ngForm" (ngSubmit)="submit()">
 	<div class="row">
 		<div class="col">
 			<img src="./assets/avatar.png" class="Login-icon">
 		</div>
 	</div>
-	
 	<div class="spacer"></div>
 	<div class="row">
 		<div class="col">
 			<div class="input">
-			  <input class="inputbox" placeholder="Username ...">
+			  <input name="username" class="inputbox" placeholder="Username ..." [(ngModel)]="model.username" required>
 			  <div class="status">
 			    <p>Username</p>
 			  </div>
@@ -20,7 +19,7 @@
 	<div class="row">
 		<div class="col">
 			<div class="input">
-			  <input class="inputbox" placeholder="Login ...">
+			  <input class="inputbox" placeholder="Password ..."  name="password" required>
 			  <div class="status">
 			    <p>Password</p>
 			  </div>
@@ -30,7 +29,7 @@
 	<div class="spacer"></div>
 	<div class="row">
 		<div class="col">
-			<button type="Submit" class="enter">LOGIN</button>
+			<button name ="submit" type="Submit" class="enterBtn">LOGIN</button>
 		</div>
 	</div>
 	<div class="smspacer"></div>
