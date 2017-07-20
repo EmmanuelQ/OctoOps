@@ -1,0 +1,118 @@
+$breakpoints: (
+	'sm': 767px,
+	'md': 992px,
+	'lg': 1200px
+);
+
+@mixin respond-to($breakpoint){
+	//retrieves the value from the key
+	$value: map-get($breakpoints, $breakpoint);
+
+
+	@if $value != null{
+		@media (min-width: $value){
+			@content;
+		}
+	}@else{
+		@warn "Unfortunately , no value could be retrieved from from `#{$breakpoint}`."
+	}
+}
+
+
+.myContainer{
+	position: absolute;
+ 	height: 100%;
+ 	width: 100%;
+	background-color: rgb(240, 240, 241);
+
+}
+
+.myToolBar{
+	position: absolute;
+	display: block;
+	width: 100%;
+	z-index: 999;
+	background-color: #ffb7b7;
+	box-shadow: 0 1px 8px  rgba(0, 0, 0, 0.2)
+}
+
+.profile-btn{
+	position: absolute;
+	right: 40px;
+	.profile-icon{
+		position: absolute;
+		right: 80px;
+		padding-right: 10px;
+	}
+	p{
+		display: inline
+	}
+}
+#mySelectionMenu{
+	visibility: hidden;
+
+}
+p{
+	display: inline;
+	padding-right: 25px;
+	color: rgb(255,255,255);
+	cursor: pointer;
+}
+
+@include respond-to(sm){
+	#mySelectionMenu{
+		position: absolute;
+		visibility: visible;
+		right: 200px;
+		
+		#selectionBar{
+			position: absolute;
+			background-color: white;
+			border-radius: 4px;
+			height: 5px;
+			width: 50px;
+			right: 25px;
+			opacity: 0.8;
+			transition: right 250ms ease-in-out;
+		}
+	}
+
+}
+.drawer{
+		position: absolute;
+}
+.drawer:hover {
+	cursor: pointer;
+}
+.sideContent{
+	width: 80%;
+	@include respond-to(sm){
+		width: 30%;
+	}
+	@include respond-to(md){
+		width: 12%;
+	}
+}
+
+.mainPage{
+	position:absolute;
+	height: 100%; 
+	width: 100%;	
+	background-color: rgb(240, 240, 241);
+}
+
+
+#highlight{
+	position: absolute;
+	top: 1px;
+	height: 30px;
+	width: 60px;
+	z-index: -1;
+	border-radius: 4px;
+	right: 176px;
+	background-color: black;
+	opacity: 0.05;
+}
+
+
+

@@ -1,5 +1,5 @@
 
-$inputH: 50px;
+$inputH: 45px;
 
 $breakpoints: (
 	'sm': 767px,
@@ -27,20 +27,19 @@ $breakpoints: (
 	  	display: block;
 	  	margin-left: auto;
 		margin-right: auto;
-	 	width: 80%;
+	 	width: 67%;
+
 	  	.inputbox{
 		    position: absolute;
-		    border-style: solid;
-		    border-color: #B8B0B0;
+		    border: 1px solid #E9E9E9;
+		    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
 		    background-color: #e6e9f0;
-		    opacity: 0.4;
-		    border-width: 1px;
-		    border-radius: 8px;
-		    border-left: transparent;
+		    opacity: 0.25;
 		    padding: 0px; // get rid of inherent inputbox padding
 		    padding-left: 36%;
 		    @include respond-to(md){
 		    	padding-left: 28%;
+		    	font-size: 12pt;
 		    }
 		    width: 100%;
 			height: $inputH;
@@ -48,15 +47,16 @@ $breakpoints: (
 		}
 	  	.inputbox:focus{
 	    	outline-width: 0px;
+	    	opacity: 0.35;
 	  	}
 	  	.status{
 		    position: absolute;
-		    background-color: #FFFDFD;
+		    background-color: #e6e9f0;
 		    text-align: center;
 		   	font-family: 'Bitter', serif;;
-		    opacity: 0.9;
-		    border: solid #B8B0B0 1px;
-		    border-radius: 8px;
+		    opacity: 0.2;
+		    border: solid #E9E9E9 1px;
+		    //border-radius: 8px;
 		    height: $inputH;
 		    width: 33%;
 		    @include respond-to(md){
@@ -67,10 +67,10 @@ $breakpoints: (
 		      margin: 12px;
 		      margin-left: 6px;
 		      color: #636363;
-		      font-size: 10.5pt;
+		      font-size: 9pt;
 		      @include respond-to(md){
-		      	margin: 12px;
-		    	font-size: 12pt;
+		      	margin-top: 12px;
+		    	font-size: 10pt;
 		      }
 		    }
 	  	}  
@@ -79,29 +79,27 @@ $breakpoints: (
 }
 
 .spacer{
-	height: 100px;
+	height: 70px;
 }
 .smspacer{
-	height: 50px;
+	height: 40px;
 }
 
 .window{
 	margin-left: auto;
     margin-right: auto;
-	margin-top: 5%;
-	background-color: #FFFFFF;
-	border-radius: 10px;
-	border: solid #B8B0B0 1px;
+	margin-top: 6%;
 	padding-bottom: 2%;
 	width: 95%;
-	@include respond-to(lg){
-		width: 66%;
+	@include respond-to(md){
+		width: 45%;
 	}
 	.Login-icon{
 		display: block;
 		margin-left: auto;
     	margin-right: auto;
-    	margin-top: 5%;
+    	margin-top: 10%;
+    	
 	}
 	.highlight{
 		width: 100%;
@@ -112,55 +110,26 @@ $breakpoints: (
 		margin-top: 6%;
 	  	margin-left: auto;
     	margin-right: auto;
-    	width: 60%;
-		.login{
-		  display: inline-block;
-		  background-color: #00ffc0;
-		  color: #FFFFFF;
-		  width: 48%;
-		  height: 45px;
-		  font-size: 16pt;
-		  text-align: center;
-		  font-family: 'Bitter', serif;;
-		  p{
-		    margin: 6px;
-		  }
-		}
-
-		.newuser{
-			display: inline-block;
-		  	background-color: #999999;
-		 	color: #FFFFFF;
-		 	margin-left: -2%;
-			width: 48%;
-			height: 45px; 
-			font-size: 16pt;
-			text-align: center;
-			font-family: 'Bitter', serif;;
-			border-left: transparent;
-		    p{
-		    	margin: 6px;
-		    	margin-left: 6px;
-			}
-		}
-
+    	width: 60%;	
 	}
 
 	.enterBtn{
 		display: block;
 		margin-left: auto;
     	margin-right: auto;
-    	width: 60%;
+    	border-radius: 2px;
+    	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
+    	width: 50%;
     	height: $inputH; //well use a standard height for now
-    	border-radius: 8px;
-    	background-color: #41b1f2;
-    	border: none;
-    	color: #FFFFFF;
+    	border: 1px solid #E9E9E9;
+    	background-color: #FFFFFF;
+    	color: #FFCCCC;
     	font-size: 18pt;
     	font-weight: bold;
 	}
 	.enterBtn:hover{
-		background-color: #53b8f3;
+		background-color: #e6e9f0;
+		opacity: 0.4;
 		cursor: pointer;
 		cursor: hand;
 	}
@@ -170,3 +139,11 @@ $breakpoints: (
 			
 }
 
+
+.myContainer{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #FFCCCC !important;
+
+}

@@ -1,28 +1,32 @@
 import { Injectable} from '@angular/core';
-import {Http, Headers} from '@angular/http';
+import {Http, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {User} from './models/user';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
+import 'rxjs';
 
 
 
 
 @Injectable()
 export class UserAuthService {
-	private authUrl: string = 'api/userauth';
-	private headers = new Headers({'Content-type': 'application/json'});
+	private authUrl: string = 'userauth';
+	
 
 
 
   	constructor(private http: Http) {}
 
-	authUser(): Observable<User>{
-	  	return this.http.post(this.authUrl, {headers: this.headers })
-	  					.map(response => response.json() as User);
-	  					
+	authenticate(username: string, password: string): Observable<User>{
+		/*let headers = new Headers({'Content-type': 'application/json'});
+		let options = new RequestOptions({ headers: headers });
 
+	  	return this.http.post(this.authUrl, {username, password}, options)
+	  					.map(response => response.json());
+	  					
+	  	*/
+	  	return Observable.of({email: "emmanuelq38", password:"pass12"});
 
 	}
 

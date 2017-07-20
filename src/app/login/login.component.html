@@ -1,47 +1,40 @@
-<form name ="form" class="window" #loginForm="ngForm" (ngSubmit)="submit()">
-	<div class="row">
-		<div class="col">
-			<img src="./assets/avatar.png" class="Login-icon">
-		</div>
-	</div>
-	<div class="spacer"></div>
-	<div class="row">
-		<div class="col">
-			<div class="input">
-			  <input name="username" class="inputbox" placeholder="Username ..." [(ngModel)]="model.username" required>
-			  <div class="status">
-			    <p>Username</p>
-			  </div>
+<div class="myContainer">
+	<form class="window" [formGroup]="loginForm" novalidate>
+		<div class="row">
+			<div class="col">
+				<img src="./assets/user.png" class="Login-icon" height="150">
 			</div>
 		</div>
-	</div>
-	<div class="spacer"></div>
-	<div class="row">
-		<div class="col">
-			<div class="input">
-			  <input class="inputbox" placeholder="Password ..."  name="password" required>
-			  <div class="status">
-			    <p>Password</p>
-			  </div>
+		<div class="smspacer"></div>
+		<div class="row">
+			<div class="col">
+				<div class="input">
+				  <input name="username" class="inputbox" formControlName="userName" placeholder="Username ..." required>
+				  <div class="status">
+				    <p>Username</p>
+				  </div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="spacer"></div>
-	<div class="row">
-		<div class="col">
-			<button name ="submit" type="Submit" class="enterBtn">LOGIN</button>
+		<div class="spacer"></div>
+		<div class="row">
+			<div class="col">
+				<div class="input">
+				  <input  name="password" class="inputbox" formControlName="password" placeholder="Password ..."  type="password" required>
+				  <div class="status">
+				    <p>Password</p>
+				  </div>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="smspacer"></div>
-	<div class="row">
-		<div class="col">
-			<div class="highlight"></div>
-			<div class="selector">
-				<div class="login"><p>Log In</p></div>
-				<div class="newuser"><p>Sign Up</p></div>
-				<!--<img src="./assets/drawer.png" class="drawer">-->
+		<div class="spacer"></div>
+		<div style="height: 10px"></div>
+		<div class="row">
+			<div class="col">
+				<button name ="submit" type="Submit" class="enterBtn" (click)="onSubmit()">Login</button>
+			</div>
+		</div>
 
-			</div>
-		</div>
-	</div>
-</form>
+		
+	</form>
+</div>

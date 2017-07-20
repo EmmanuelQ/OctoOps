@@ -1,0 +1,30 @@
+
+<div class="myContainer" >
+	
+
+	<md-toolbar  class="myToolBar">
+	 <i class="material-icons md-36 md-light drawer" (click)="sidenav.toggle()">reorder</i>
+
+	 <div class="profile-btn">
+	  	<i class="material-icons md-36 md-light profile-icon">face</i><p>Profile</p>
+	  </div>
+
+	  <div id="mySelectionMenu">
+	    <p (click)="activate('stats')" (mouseover)="mouseOver('stats')" (mouseleave)="remove()">Stats</p>
+	  	<p (click)="activate('sales')" (mouseover)="mouseOver('sales')" (mouseleave)="remove()">Sales</p>
+	  	<p (click)="activate('stock')" (mouseover)="mouseOver('stock')" (mouseleave)="remove()">Stock</p>
+	  	<div id="selectionBar"></div>
+
+	  </div>
+
+	</md-toolbar>
+	<md-sidenav-container class="mainPage">
+		
+	
+		<md-sidenav #sidenav mode="side" class="sideContent">
+			Hello
+		</md-sidenav>
+	</md-sidenav-container>
+	<router-outlet></router-outlet>
+
+</div>
