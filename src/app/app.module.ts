@@ -8,7 +8,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import {myAngularMaterialModule} from './material/angular-material.module';
 import { StockComponent } from './stock/stock.component';
-
+import { HomeRoutingModule} from './home/home-routing.module';
+import { AddComponent } from './stock/add/add.component';
 
 
 const ROUTES = [
@@ -37,11 +38,13 @@ const ROUTES = [
     LoginComponent,
     HomeComponent,
     StockComponent,
+    AddComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    HomeRoutingModule,
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule,
     myAngularMaterialModule

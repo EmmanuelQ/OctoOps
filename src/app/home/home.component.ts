@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,17 +9,17 @@ import { Component, OnInit, ViewChild} from '@angular/core';
 export class HomeComponent implements OnInit {
 	hoverDiv = document.createElement("div");
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
   	this.hoverDiv.style.position = "absolute";
   	this.hoverDiv.style.top = "1px";
-	this.hoverDiv.style.height = "30px";
-	this.hoverDiv.style.width = "60px";
-	this.hoverDiv.style.zIndex = "-1";
-	this.hoverDiv.style.borderRadius= "4px";
-	this.hoverDiv.style.backgroundColor= "grey";
-	this.hoverDiv.style.opacity= "0.1";
+  	this.hoverDiv.style.height = "30px";
+  	this.hoverDiv.style.width = "60px";
+  	this.hoverDiv.style.zIndex = "-1";
+  	this.hoverDiv.style.borderRadius= "4px";
+  	this.hoverDiv.style.backgroundColor= "grey";
+  	this.hoverDiv.style.opacity= "0.1";
 
   }
 
@@ -37,10 +37,7 @@ export class HomeComponent implements OnInit {
   			this.hoverDiv.style.right = "19px";
 
   			break;
-  		
-  		default:
-  			// code...
-  			break;
+ 
   	}
   }
   remove(){
@@ -52,6 +49,7 @@ export class HomeComponent implements OnInit {
   	switch (selection) {
   		case "stats":
   			document.getElementById("selectionBar").style.right = "181px";
+        //this.router.navigate(['home/stats']);
   			break;
   		case "sales":
   		  	document.getElementById("selectionBar").style.right = "104px";
@@ -59,7 +57,8 @@ export class HomeComponent implements OnInit {
   			break;
   		case "stock":
   			document.getElementById("selectionBar").style.right = "25px";
-
+        this.remove();
+        this.router.navigate(['home/stock']);
   			break;
   		
   		default:
