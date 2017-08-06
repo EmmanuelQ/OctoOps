@@ -7,7 +7,8 @@ const USERAUTH = require("./server/routes/userauth.js");
 
 const app = express();
 const api = require('./server/routes/api');
-
+const port = process.env.PORT || '4006';
+app.set('port', port);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -21,15 +22,7 @@ app.use('/api', api);
 app.use(express.static(path.join(__dirname, 'dist')));
 
 
-app.get('/boo', (req,res) => {
-	res.send("boo");
-	//res.sendFile(path.join(__dirname, 'dist/index.html'));
-})
 
-
-const port = process.env.PORT || '4006';
-
-app.set('port', port);
 
 const server = http.createServer(app);
 

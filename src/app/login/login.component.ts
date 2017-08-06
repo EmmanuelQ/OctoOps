@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {UserAuthService} from '../userauth.service';
+import {Observable} from 'rxjs/Observable';
 import {Router,
 		Routes,
 		Event as RouterEvent,
@@ -19,47 +20,39 @@ import {Router,
 export class LoginComponent{
 	loginForm:FormGroup;
 	loading:boolean = false;
-
+	token:string;
 	
 	constructor(private formBuilder: FormBuilder,
 				private userAuth: UserAuthService,
 				private router: Router){
 
 		this.createForm();
-		this.router.events.subscribe(function(event){
 
-		});
 	}
 
 
 	createForm(){
 		this.loginForm = this.formBuilder.group({
-			userName: ['', Validators.required],
+			username: ['', Validators.required],
 			password: ['', Validators.required]
 		})
 	}
 
 	onSubmit(){
 		const userCred = this.loginForm.value;
-		console.log("trying to do some shit");
-		this.userAuth.authenticate(userCred.userName, userCred.password)
-					 .subscribe((data)=>{
-					 	this.router.navigate(['./home']);
-					 	//console.log(data.email);
-					 });
+		this.userAuth.authenticate(userCred.username, userCred.password)
+					 .subscribe((data) => {
+					 				let token = data.token;
+					 				if(token){
+					 					localStorage.setItem('userToken', token);
+
+					 					this.router.navigate(['/home']);
+					 				}else{
+					 					console.error("token missing");
+					 				}
+					 			},
+					 			err => console.error(err));
 	}
 
-	//shows and hides thepsinner when naivation events occur
-	navigationInterceptor(event: RouterEvent): void{
-		if (event instanceof NavigationStart){
-			this.loading = true;
-		}else if (event instanceof NavigationEnd){
-			this.loading = false
-		}else if (event instanceof NavigationCancel){
-			this.loading = false;
-		}else if (event instanceof NavigationError){
-			this.loading = false;
-		}
-	}
 
 }

@@ -18,16 +18,14 @@ export class UserAuthService {
 
   	constructor(private http: Http) {}
 
-	authenticate(username: string, password: string): Observable<User>{
-		/*let headers = new Headers({'Content-type': 'application/json'});
+	authenticate(username: string, password: string){
+		let headers = new Headers({'Content-type': 'application/json'});
 		let options = new RequestOptions({ headers: headers });
-
+		console.log("iuiub");
 	  	return this.http.post(this.authUrl, {username, password}, options)
-	  					.map(response => response.json());
+	  					.map(res => res.json()); 
 	  					
-	  	*/
-	  	return Observable.of({email: "emmanuelq38", password:"pass12"});
-
+	  	
 	}
 
 

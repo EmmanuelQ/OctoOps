@@ -10,7 +10,6 @@ export class StockComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  	console.log("momma we made it")
   }
 
 }

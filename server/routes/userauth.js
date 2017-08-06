@@ -1,37 +1,38 @@
-const express = require('express'),
-	  router = express.Router(),
-	  axios = require('axios'),
-	  mongoose = require('mongoose'),
-	  bodyParser = require('body-parser'),
-	  API = 'https://jsonplaceholder.typicode.com';
-
+const express = require('express');
+const router = express.Router();
+const axios = require('axios');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const API = 'https://jsonplaceholder.typicode.com';
+const jwt = require("jsonwebtoken");
+const User = require("../models/user-model");
+const config = require('../../config.js');
 
 
 router.use(bodyParser.json()),
 router.use(bodyParser.urlencoded({extended: true}));
 
-router.post('/', (req, res)=>{
-	let cred = req.body;
 
-	users.forEach(function(user){
-		let userName = cred.username;
-		let password = cred.password;
-		//res.send(JSON.stringify({name: userName}));
-		if( userName === user.name && password === user.password){
-			res.send(JSON.stringify({name: "emmanuel"}));
-		}
-	});
-	res.setHeader('Content-Type', 'application/json')
-	res.send(JSON.stringify({name: "not found"}));
+mongoose.connect(config.db);
+
+
+router.post('/', function(req, res){
+    User.findOne({username: req.body.username}, function(err, user){
+        if(err) console.error(err);
+        if(user && user.password === req.body.password){
+            let token = jwt.sign(user, config.secret);
+            res.json({
+                success: true,
+                message: 'Enjoy your token',
+                token: token,
+                body: user
+            })
+        }else{
+            res.json({success: false, message: 'Authentication failed'});
+        }
+    });
+
 });
-
-
-
-const users = [{
-	name: 'emmanuelq38@gmail.com',
-	password: 'linti565',
-}]
-
 
 module.exports = router;
 
